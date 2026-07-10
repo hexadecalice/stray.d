@@ -1,10 +1,21 @@
 #include <iostream> 
 
+enum status {
+    STARVE,
+    POISON,
+    POKE
+};
 
-int main(void) { 
 
+class creature {
+    private:
+        int health = 100;
+        int hunger = 100;
 
-	std::cout << "Hello World!"; 
+    public:
+        int status_values[] {0,0,0};
 
-	return 0;
-}
+        void tick() {
+        
+        };
+};
