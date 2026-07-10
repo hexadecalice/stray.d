@@ -1,3 +1,4 @@
+#define MAX_HEALTH 100
 #define MAX_HUNGER 100
 
 
