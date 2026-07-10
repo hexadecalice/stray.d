@@ -4,5 +4,6 @@
 
 class creature {
     private:
+        int health = MAX_HEALTH;
         int hunger = MAX_HUNGER;
 };
