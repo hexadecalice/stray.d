@@ -2,4 +2,6 @@
 
 
 class creature {
+    private:
+        int hunger = MAX_HUNGER;
 };
