@@ -26,15 +26,15 @@ CLI should be broken down to four main components:
 3. [Daemon Message Passer](#dmp-anchor)
 4. [Bitmap-ASCII Renderer](#bar-anchor)
 
-<a name="teh-anchor">
+<a name="teh-anchor"></a>
 ### [Terminal Event Handler](#teh-anchor)
 We can't tie a polling system to the renderer's frame rate or we'll draw improperly sized frames to standard output.  We'll also need separate Linux and Windows definitions for terminal event collection, but all other handler components _should_ be interoperable.
 
-<a name="menu-anchor">
+<a name="menu-anchor"></a>
 ### [Menu Interface](#menu-anchor)
 
-<a name="dmp-anchor">
+<a name="dmp-anchor"></a>
 ### [Daemon Message Passer](#dmp-anchor)
 
-<a name="bar-anchor">
+<a name="bar-anchor"></a>
 ### [Bitmap-ASCII Renderer](#bar-anchor)
