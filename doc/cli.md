@@ -32,6 +32,12 @@ We can't tie a polling system to the renderer's frame rate or we'll draw imprope
 
 <a name="menu-anchor"></a>
 ### [Menu Interface](#menu-anchor)
+The menu interface is responsible for handling user input and presents the state of the game through standard output. It is **NOT** responsible for loading the creature bitmaps from file; the process is as follows:
+1. Query the Daemon Message Passer for creature/game states.
+2. Query the Terminal Event Handler for terminal resizing.
+3. Pass terminal dimensions and render queue to the Bitmap-ASCII Renderer.
+4. Receive creature render.
+5. Concatenate and display whole game state to standard output.
 
 <a name="dmp-anchor"></a>
 ### [Daemon Message Passer](#dmp-anchor)
