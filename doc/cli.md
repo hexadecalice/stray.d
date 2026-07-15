@@ -39,6 +39,10 @@ The menu interface is responsible for handling user input and presents the state
 4. Receive creature render.
 5. Concatenate and display whole game state to standard output.
 
+Figure: TUI Mockup of a Visiting Monster
+
+![Terminal User Interface mock-up of the visited monster's status and portrait.](resources/MonsterTUIMockup.png)
+
 <a name="dmp-anchor"></a>
 ### [Daemon Message Passer](#dmp-anchor)
 
