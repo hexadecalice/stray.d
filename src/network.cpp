@@ -1,6 +1,10 @@
 #include <iostream> 
 #include <SFML/Network.hpp>
 #include <string>
+#include "q_functions.hpp"
+
+
+
 
 void setup_listener(sf::TcpListener &listener, int port) { 
 
@@ -10,14 +14,14 @@ void setup_listener(sf::TcpListener &listener, int port) {
 		exit(-1);
 	}
 
-	listener.setBlocking(false); 
-
 	std::cout << "Success! Bound to port " << port << "."; 
 
 
 }
 
-void listen_to_port(sf::TcpListener &listener) { 
+
+
+void listen_to_port(sf::TcpListener &listener, CommandQueue& cq) { 
 
 	sf::TcpSocket client; 
 
@@ -25,18 +29,26 @@ void listen_to_port(sf::TcpListener &listener) {
 	std::size_t received; 
 
 
-	if(listener.accept(client) == sf::Socket::Done) { 
 
-		if(client.receive(buffer, sizeof(buffer), received) == sf::Socket::Done) { 
-				std::string command(buffer, received); 
-				std::cout << command;
+	while(true) { 
+
+		if(listener.accept(client) == sf::Socket::Done) { 
+
+			if(client.receive(buffer, sizeof(buffer), received) == sf::Socket::Done) { 
+					std::string command(buffer, received); 
+					queue_push(cq, command);
+			}
+			else { 
+				std::cout << "Couldn't receive data into the variables. Cry about it.";
+				exit(1);
+			}
 
 		}
+		else { 
+			std::cout << "Accept() failed when trying to create client socket. Whoops.";
+			exit(2);
 
-	}
-	else { 
-
-
+		}
 	}
 
 
@@ -44,18 +56,3 @@ void listen_to_port(sf::TcpListener &listener) {
 
 }
 
-int main(void) { 
-
-
-	sf::TcpListener my_listener; 
-	setup_listener(my_listener, 6767);
-
-	while(true) { 
-		listen_to_port(my_listener);
-		sf::sleep(sf::milliseconds(100));
-
-	}
-
-
-	return 0; 
-} 
